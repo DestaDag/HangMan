@@ -1,17 +1,22 @@
 import random
 life = 8
-file = open("nouns.txt", "r")
-if file.mode == "r":
-    contents = file.readlines()
+with open ("nouns.txt") as f:
+  lines = f.readlines()
 
-guess = contents[random.randint(0, len(contents))]
+for line in lines:
+    contents = line.split(";")
 
+line = lines[random.randint(0, len(lines))]
+
+tmp = line.split(";")
+guess = tmp[0]
+print(guess)
 guess1 = []
 
 
 def scan(word, letter):
     s = 0
-    for let in range(len(word) - 1):
+    for let in range(len(word)):
         if letter == word[let]:
             s += 1
 
@@ -22,7 +27,7 @@ def scan(word, letter):
 
 
 def ins(word, letter, word1):
-    for let in range(len(word)-1):
+    for let in range(len(word)):
         if letter == word[let]:
             word1[let] = letter
     print(word1)
@@ -39,14 +44,14 @@ def final(word1):
     else:
         return True
 
-for x in range(len(guess)-1):
+for x in range(len(guess)):
     guess1.append('_')
 print(guess1)
 
 while life > 0:
-    print("life", life)
+    print("life", life, '\n the word is a', tmp[1])
     inputs = ""
-    y = input("enter letter ")
+    y = input("enter letter:")
     if scan(guess, y):
         print("Wrong letter")
         print(guess1)
