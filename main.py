@@ -1,11 +1,11 @@
 import random
-
 life = 8
 file = open("nouns.txt", "r")
 if file.mode == "r":
     contents = file.readlines()
 
 guess = contents[random.randint(0, len(contents))]
+
 guess1 = []
 
 
